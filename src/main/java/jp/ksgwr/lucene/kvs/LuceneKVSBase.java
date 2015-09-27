@@ -23,6 +23,7 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.SearcherManager;
+import org.apache.lucene.search.Sort;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
@@ -241,7 +242,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 			manager.maybeRefreshBlocking();
 			IndexSearcher searcher = manager.acquire();
 			try {
-				TopDocs top = searcher.search(new TermQuery(keyTerm(key, KEY)), 1);
+				TopDocs top = searcher.search(new TermQuery(keyTerm(key, KEY)), 1, Sort.INDEXORDER);
 				if(top.totalHits==0 ) { return null; }
 				int docId = top.scoreDocs[0].doc;
 				return searcher.doc(docId);
