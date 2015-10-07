@@ -121,10 +121,10 @@ valuesDB.close();
 
 # CHANGE Logs
 
-Version 0.0.2 (2015/10/08)
- 	* add LuceneValuesDB
-Version 0.0.1 (2015/09/27)
- 	* add LuceneKVS
+Version 0.0.2 (2015/10/08)  
+ 	* add LuceneValuesDB  
+Version 0.0.1 (2015/09/27)  
+ 	* add LuceneKVS  
 
 # Licenese
 MIT License
