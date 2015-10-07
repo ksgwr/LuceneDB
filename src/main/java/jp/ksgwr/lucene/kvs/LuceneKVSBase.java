@@ -33,15 +33,15 @@ import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
 
 /**
+ * Lucene KVS abstract class
  *
- * TODO: key単位ロック, 全件データ取得、ファイル読み込み=>メモリ展開
- * 無駄なSimilarityの設定などは除いて高速化
- * Mapをimplementsする？
- *
- * @author Kouhei
+ * @author ksgwr
  *
  */
 public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
+
+	/** Lucene Version */
+	public static Version LUCENE_VERSION = Version.LUCENE_4_9;
 
 	/** Key Field Name */
 	public static final String KEY = "key";
@@ -70,7 +70,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 	/** documents size */
 	protected AtomicInteger numDocs;
 
-	/** if true, delete file automatically*/
+	/** if true, delete file automatically */
 	protected boolean isVolatile;
 
 	/**
@@ -84,7 +84,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 		this.directory = directory;
 		this.file = file;
 		Analyzer analyzer = new KeywordAnalyzer();
-		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_4_9, analyzer);
+		IndexWriterConfig config = new IndexWriterConfig(LUCENE_VERSION, analyzer);
 		this.writer = new IndexWriter(directory, config);
 		// LuceneObjectKVS avoid "no segments* file found in RAMDirectory" Exception
 		this.writer.commit();
