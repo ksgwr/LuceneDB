@@ -194,4 +194,4 @@ Version 0.0.1 (2015/09/27)
  	* add LuceneKVS  
 
 # Licenese
-MIT License
+Apache License 2.0
