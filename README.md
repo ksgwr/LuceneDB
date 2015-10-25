@@ -186,11 +186,11 @@ query.map.put(null, "a");
 
 # CHANGE Logs
 
-Version 0.0.3 (2015/10/25)
-  * add LuceneObjectValuesDB
-Version 0.0.2 (2015/10/08)  
+* Version 0.0.3 (2015/10/25)  
+  * add LuceneObjectValuesDB  
+* Version 0.0.2 (2015/10/08)  
  	* add LuceneValuesDB  
-Version 0.0.1 (2015/09/27)  
+* Version 0.0.1 (2015/09/27)  
  	* add LuceneKVS  
 
 # Licenese
