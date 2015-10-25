@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>jp.ksugawar</groupId>
   <artifactId>lucene-db</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -36,6 +36,12 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

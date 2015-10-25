@@ -119,8 +119,75 @@ valuesDB.close();
 
 ```
 
+# Object Values DB based Lucene
+## 特徴
+
+ValuesDBを拡張しTSVなどでなくObjectを追加・検索できるように拡張したもの。
+検索もObjectをセットすることで検索できる。ただし、その場合はNullを区別するためpremitiveなObjectは非推奨。
+リフレクションを多用しており、効率性はやや難があるが、巨大な階層型のデータが利用できることが特徴。
+Map,List,Arrayなども対応しているが、要素中にpremitiveなクラスのみでカスタムのObjectは非対応。（TODO)
+単体のフィールドでpublicで取得できる単純なオブジェクトであれば利用可能で、これを使い階層型を表現する。
+
+## 使い方
+### Simple Use
+
+```Java
+LuceneObjectValuesDB valuesDB = new LuceneObjectValuesDB<Sample>(Sample.class);
+
+Sample sample = new Sample();
+sample.name = "hoge";
+sample.age = 10;
+
+// Objectを追加
+valuesDB.addObject(sample);
+// 書き込み結果を反映
+valuesDB.commit();
+
+// queryもObjectを生成, null以外をAND検索する
+Sample query = new Sample();
+query.name = "hoge";
+
+Document[] docs = valuesDB.search(query);
+// 検索結果をObjectに復元
+List<Sample> lists = valuesDB.convertObjectList(docs);
+
+```
+
+### Advanced Use
+
+```Java
+
+public static class Sample {
+	@TextFieldable //部分一致で検索可能
+	public String name;
+	@NoIndex // Index化しないが復元可能
+	public Integer age;
+	// 保存対象でないフィールド
+	transient public Integer tmp;
+	@TextFieldable(key=false) //valueのみ部分一致検索可能
+	public Map<Integer, String> map;
+	public Long staticVal = 123456L; //default値はデフォルトコンストラクタなので初期化可能
+	public Sample(){}
+	public Sample(String name) {
+		this.name = name;
+	}
+}
+
+// sample.name = 'a' or sample.name = 'b' の OR検索
+Document[] docs = valuesDB.search(
+			new Sample[]{new Sample("a"), new Sample("b")});
+
+// mapのvalueを検索する場合
+Sample query = new Sample();
+query.map = new HashMap<>();
+query.map.put(null, "a");
+
+```
+
 # CHANGE Logs
 
+Version 0.0.3 (2015/10/25)
+  * add LuceneObjectValuesDB
 Version 0.0.2 (2015/10/08)  
  	* add LuceneValuesDB  
 Version 0.0.1 (2015/09/27)  
