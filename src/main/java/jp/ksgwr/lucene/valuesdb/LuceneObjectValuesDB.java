@@ -252,7 +252,7 @@ public class LuceneObjectValuesDB<T> extends LuceneValuesDB {
 					}
 				}
 			}
-			if(noIndex != null && textFieldable != null) {
+			if(noIndex == null && textFieldable != null) {
 				fieldType = TextField.class;
 			}
 			isMultiples.add(isMultiple);
