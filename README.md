@@ -123,9 +123,9 @@ valuesDB.close();
 ## 特徴
 
 ValuesDBを拡張しTSVなどでなくObjectを追加・検索できるように拡張したもの。
-検索もObjectをセットすることで検索できる。ただし、その場合はNullを区別するためpremitiveなObjectは非推奨。
+検索もObjectをセットすることで検索できる。ただし、その場合はNullを区別するためprimitiveな型の使用は非推奨。
 リフレクションを多用しており、効率性はやや難があるが、巨大な階層型のデータが利用できることが特徴。
-Map,List,Arrayなども対応しているが、要素中にpremitiveなクラスのみでカスタムのObjectは非対応。（TODO)
+Map,List,Arrayなども対応しているが、要素中にprimitiveな型のみが使用可能でカスタムのObjectは非対応。（TODO)
 単体のフィールドでpublicで取得できる単純なオブジェクトであれば利用可能で、これを使い階層型を表現する。
 
 ## 使い方
