@@ -22,7 +22,7 @@ public class KVSSearcherFactory extends SearcherFactory {
 	 * Returns a new IndexSearcher over the given reader.
 	 */
 	@Override
-	public IndexSearcher newSearcher(IndexReader reader) throws IOException {
+	public IndexSearcher newSearcher(IndexReader reader, IndexReader previousReader) throws IOException {
 		IndexSearcher searcher = new IndexSearcher(reader);
 		// Dummy Similarity(高速化)
 		searcher.setSimilarity(SIMILARITY);

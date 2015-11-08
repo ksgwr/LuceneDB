@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.MMapDirectory;
 import org.junit.Test;
 
@@ -34,7 +35,9 @@ public class LuceneObjectKVSTest {
 	@Test
 	public void advancedTest() throws IOException {
 		File indexFile = new File("data", "test3");
-		LuceneObjectKVS<Integer, Sample> kvs = new LuceneObjectKVS<>(MMapDirectory.open(indexFile), indexFile, true);
+		FSDirectory directory = MMapDirectory.open(indexFile.toPath());
+
+		LuceneObjectKVS<Integer, Sample> kvs = new LuceneObjectKVS<>(directory, indexFile, true);
 
 		Sample sample = new Sample();
 		sample.name = "hoge";

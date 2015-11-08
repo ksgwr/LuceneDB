@@ -166,7 +166,7 @@ public static class Sample {
 	transient public Integer tmp;
 	@TextFieldable(key=false) //valueのみ部分一致検索可能
 	public Map<Integer, String> map;
-	public Long staticVal = 123456L; //default値はデフォルトコンストラクタなので初期化可能
+	public Long staticVal = 123456L; //default値はデフォルトコンストラクタなどで初期化可能
 	public Sample(){}
 	public Sample(String name) {
 		this.name = name;
@@ -186,12 +186,14 @@ query.map.put(null, "a");
 
 # CHANGE Logs
 
-* Version 0.0.3 (2015/10/25)  
-  * add LuceneObjectValuesDB  
-* Version 0.0.2 (2015/10/08)  
- 	* add LuceneValuesDB  
-* Version 0.0.1 (2015/09/27)  
- 	* add LuceneKVS  
+* Version 0.1.0 (2015/11/08)
+  * update lucene 4.9.0 to 5.3.1
+* Version 0.0.3 (2015/10/25)
+  * add LuceneObjectValuesDB
+* Version 0.0.2 (2015/10/08)
+ 	* add LuceneValuesDB
+* Version 0.0.1 (2015/09/27)
+ 	* add LuceneKVS
 
 # Licenese
 Apache License 2.0

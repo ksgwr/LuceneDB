@@ -1,13 +1,10 @@
 package jp.ksgwr.lucene.valuesdb;
 
-import java.io.Reader;
-
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.Tokenizer;
 import org.apache.lucene.analysis.ngram.NGramTokenizer;
 import org.apache.lucene.analysis.standard.StandardFilter;
-import org.apache.lucene.util.Version;
 
 /**
  * Ngram Analyzer
@@ -17,9 +14,6 @@ import org.apache.lucene.util.Version;
  */
 public class NgramAnalyzer extends Analyzer {
 
-	/** LUCENE VERSION */
-	protected final Version matchVersion;
-
 	/** ngram */
 	protected int n;
 
@@ -27,15 +21,14 @@ public class NgramAnalyzer extends Analyzer {
 	 * constructor
 	 * @param matchVersion LUCENE VERSION
 	 */
-	public NgramAnalyzer(int n, Version matchVersion) {
+	public NgramAnalyzer(int n) {
 		this.n = n;
-		this.matchVersion = matchVersion;
 	}
 
 	@Override
-	protected TokenStreamComponents createComponents(String fieldName, Reader reader) {
-		Tokenizer source = new NGramTokenizer(matchVersion, reader, n, n);
-		TokenStream result =  new StandardFilter(matchVersion, source);
+	protected TokenStreamComponents createComponents(String paramString) {
+		Tokenizer source = new NGramTokenizer(n, n);
+		TokenStream result =  new StandardFilter(source);
 		return new TokenStreamComponents(source, result);
 	}
 

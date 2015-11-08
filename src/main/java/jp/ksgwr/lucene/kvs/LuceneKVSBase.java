@@ -41,7 +41,7 @@ import org.apache.lucene.util.Version;
 public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 
 	/** Lucene Version */
-	public static Version LUCENE_VERSION = Version.LUCENE_4_9;
+	public static Version LUCENE_VERSION = Version.LUCENE_5_3_1;
 
 	/** Key Field Name */
 	public static final String KEY = "key";
@@ -84,7 +84,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 		this.directory = directory;
 		this.file = file;
 		Analyzer analyzer = new KeywordAnalyzer();
-		IndexWriterConfig config = new IndexWriterConfig(LUCENE_VERSION, analyzer);
+		IndexWriterConfig config = new IndexWriterConfig(analyzer);
 		this.writer = new IndexWriter(directory, config);
 		// LuceneObjectKVS avoid "no segments* file found in RAMDirectory" Exception
 		this.writer.commit();
@@ -162,7 +162,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 	 */
 	public void save(Directory directory) throws IOException {
 		for (String file : this.directory.listAll()) {
-			this.directory.copy(directory, file, file, IOContext.DEFAULT);
+			this.directory.copyFrom(directory, file, file, IOContext.DEFAULT);
 		}
 	}
 
@@ -172,7 +172,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 	 * @throws IOException IOException
 	 */
 	public void save(File file) throws IOException {
-		save((Directory)FSDirectory.open(file));
+		save((Directory)FSDirectory.open(file.toPath()));
 	}
 
 	/**

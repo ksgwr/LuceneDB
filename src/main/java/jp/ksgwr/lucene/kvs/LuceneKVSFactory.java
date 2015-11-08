@@ -58,15 +58,15 @@ public class LuceneKVSFactory {
 
 	@SuppressWarnings("rawtypes")
 	public static <T extends LuceneKVSBase> T createInstance(Class<T> clazz, File file) throws InvocationTargetException, IOException {
-		return createInstance(clazz, FSDirectory.open(file), file, false);
+		return createInstance(clazz, FSDirectory.open(file.toPath()), file, false);
 	}
 
 	@SuppressWarnings("rawtypes")
 	public static <T extends LuceneKVSBase> T createInstance(Class<T> clazz, File file, boolean onMemory, boolean isVolatile) throws InvocationTargetException, IOException {
 		if (onMemory) {
-			return createInstance(clazz, new MMapDirectory(file), file, isVolatile);
+			return createInstance(clazz, new MMapDirectory(file.toPath()), file, isVolatile);
 		} else {
-			return createInstance(clazz, FSDirectory.open(file), file, isVolatile);
+			return createInstance(clazz, FSDirectory.open(file.toPath()), file, isVolatile);
 		}
 	}
 

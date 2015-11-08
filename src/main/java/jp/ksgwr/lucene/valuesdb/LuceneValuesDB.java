@@ -52,7 +52,7 @@ import org.apache.lucene.util.Version;
 public class LuceneValuesDB {
 
 	/** Lucene Version */
-	public static Version LUCENE_VERSION = Version.LUCENE_4_9;
+	public static Version LUCENE_VERSION = Version.LUCENE_5_3_1;
 
 	/** Lucene directory */
 	protected Directory directory;
@@ -99,7 +99,7 @@ public class LuceneValuesDB {
 		this.directory = directory;
 		this.indexFile = indexFile;
 
-		IndexWriterConfig config = new IndexWriterConfig(LUCENE_VERSION, analyzer);
+		IndexWriterConfig config = new IndexWriterConfig(analyzer);
 		this.writer = new IndexWriter(directory, config);
 		this.writer.commit();
 
@@ -130,7 +130,7 @@ public class LuceneValuesDB {
 	 * @throws IOException IOException
 	 */
 	public LuceneValuesDB(Directory directory, File indexFile, boolean isVolatile) throws IOException {
-		this(directory, indexFile, isVolatile, new NgramAnalyzer(1, LUCENE_VERSION));
+		this(directory, indexFile, isVolatile, new NgramAnalyzer(1));
 	}
 
 	/**
@@ -340,7 +340,7 @@ public class LuceneValuesDB {
 	 * @return query parser
 	 */
 	public QueryParser createQueryParser(String defaultField) {
-		return new QueryParser(LUCENE_VERSION, defaultField, getAnalyzer());
+		return new QueryParser(defaultField, getAnalyzer());
 	}
 
 	/**

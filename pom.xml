@@ -1,9 +1,44 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>jp.ksugawar</groupId>
-  <artifactId>lucene-db</artifactId>
-  <version>0.0.3</version>
-  <build>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>jp.ksugawar</groupId>
+	<artifactId>lucene-db</artifactId>
+	<version>0.1.0</version>
+	<packaging>pom</packaging>
+	<name>lucene-db</name>
+
+	<description>various db based lucene</description>
+	<url>https://github.com/ksgwr/LuceneDB</url>
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+        <url>https://github.com/ksgwr/LuceneDB</url>
+        <connection>scm:git:git://github.com/ksgwr/LuceneDB.git</connection>
+        <developerConnection>scm:git:git://github.com/ksgwr/LuceneDB.git
+        </developerConnection>
+    </scm>
+    <developers>
+    	<developer>
+    		<id>ksgwr</id>
+    		<name>Kohei Sugawara</name>
+    		<email>ksgwarai@gmail.com</email>
+    		<url>https://github.com/ksgwr/</url>
+    		<roles>
+    			<role>lead</role>
+    			<role>architect</role>
+    			<role>developer</role>
+    		</roles>
+    		<timezone>-9</timezone>
+    	</developer>
+    </developers>
+
+	<build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
@@ -20,17 +55,17 @@
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
-			<version>4.9.0</version>
+			<version>5.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-queryparser</artifactId>
-			<version>4.9.0</version>
+			<version>5.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-common</artifactId>
-			<version>4.9.0</version>
+			<version>5.3.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

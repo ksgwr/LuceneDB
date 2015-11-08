@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import org.apache.lucene.index.AtomicReaderContext;
+import org.apache.lucene.index.LeafReaderContext;
 import org.apache.lucene.search.Collector;
 import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.LeafCollector;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.Scorer;
 import org.apache.lucene.search.TopDocs;
@@ -18,7 +19,7 @@ import org.apache.lucene.search.TopDocs;
  * @author ksgwr
  *
  */
-public class ExactCollector extends Collector {
+public class ExactCollector implements Collector, LeafCollector {
 
 	/** index searcher */
 	private IndexSearcher searcher;
@@ -81,13 +82,15 @@ public class ExactCollector extends Collector {
 		}
 	}
 
+
 	@Override
-	public void setNextReader(AtomicReaderContext context) throws IOException {
-		this.docBase = context.docBase;
+	public LeafCollector getLeafCollector(
+			LeafReaderContext paramLeafReaderContext) throws IOException {
+		return this;
 	}
 
 	@Override
-	public boolean acceptsDocsOutOfOrder() {
+	public boolean needsScores() {
 		return false;
 	}
 
