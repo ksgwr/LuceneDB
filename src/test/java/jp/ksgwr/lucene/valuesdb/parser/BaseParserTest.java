@@ -40,6 +40,10 @@ public class BaseParserTest {
 		fields = parser.parse("a,'b,b',c,d");
 		assertArrayEquals(new String[]{"a", "b,b", "c", "d"}, fields);
 
+		// 2 escape field in quote
+		fields = parser.parse("a,'b\\'b',\"c\\\"c\",d");
+		assertArrayEquals(new String[]{"a", "b'b", "c\"c", "d"}, fields);
+
 		// 1 invalid quote field (but not wrong)
 		fields = parser.parse("a, 'b' ,c");
 		assertArrayEquals(new String[]{"a", " 'b' ", "c"}, fields);

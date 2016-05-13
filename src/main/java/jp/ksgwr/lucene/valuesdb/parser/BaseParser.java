@@ -81,6 +81,7 @@ public class BaseParser implements ParseStrategy, WriteDocumentStrategy {
 					}
 					sb.append(str.substring(start, i));
 					list.add(sb.toString());
+					escapes.clear();
 				} else {
 					// no escape
 					list.add(str.substring(start, i));
