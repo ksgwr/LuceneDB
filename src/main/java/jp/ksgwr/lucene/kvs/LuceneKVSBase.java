@@ -157,8 +157,8 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 
 	/**
 	 * indexのコピー, RAMからFileの保存も可能
-	 * @param directory
-	 * @throws IOException
+	 * @param directory directory
+	 * @throws IOException IOException
 	 */
 	public void save(Directory directory) throws IOException {
 		for (String file : this.directory.listAll()) {
@@ -268,6 +268,7 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 	/**
 	 * documentからKeyを書き込むための実装 (Store.YESの実装が必要)
 	 * @param key key
+	 * @param keyFieldName key field name
 	 * @return byte array
 	 */
 	public Field writeKey(K key, String keyFieldName) {
@@ -276,19 +277,19 @@ public abstract class LuceneKVSBase<K, V> implements Map<K, V> {
 
 	/**
 	 * documentからValueへの復元するための実装
-	 * @param doc
-	 * @param valueFieldName
-	 * @return
-	 * @throws Exception
+	 * @param doc document
+	 * @param valueFieldName value field name
+	 * @return value
+	 * @throws Exception exception
 	 */
 	public abstract V readValue(Document doc, String valueFieldName) throws Exception;
 
 	/**
 	 * documentにValueを書き込むための実装
-	 * @param val
-	 * @param valueFieldName
-	 * @return
-	 * @throws Exception
+	 * @param val value
+	 * @param valueFieldName value field name
+	 * @return stored field
+	 * @throws Exception exception
 	 */
 	public abstract StoredField writeValue(V val, String valueFieldName) throws Exception;
 

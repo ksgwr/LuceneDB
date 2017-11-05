@@ -18,7 +18,7 @@ public class LuceneIntegerKVS<K> extends LuceneKVS<K, Integer> {
 	 * constructor
 	 * @param directory Lucene Directory
 	 * @param file Index File Path
-	 * @param onMemory if true, use RAMDirectory
+	 * @param isVolatile if true, delete file automatically
 	 * @throws IOException IOException
 	 */
 	public LuceneIntegerKVS(Directory directory, File file, boolean isVolatile) throws IOException {

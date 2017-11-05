@@ -10,6 +10,27 @@ Keyについても任意のオブジェクトが扱えるが内部ではString�
 get時に同期も取っているためマルチスレッドセーフだが効率はそこまで重視していない。
 
 ## 使い方
+### Setup
+
+pom.xmlに以下を記述
+
+```
+<repositories>
+  <repository>
+    <id>ksgwr-repo</id>
+    <url>http://ksgwr.github.io/mvn-repo/</url>
+  </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+    <groupId>jp.ksgwr</groupId>
+    <artifactId>lucene-db</artifactId>
+    <version>0.1.0</version>
+  </dependency>
+</dependencies>
+```
+
 ### Simple Use
 
 ```Java

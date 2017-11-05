@@ -43,7 +43,7 @@ public class BaseParser implements ParseStrategy, WriteDocumentStrategy {
 
 	/**
 	 * simple constructor
-	 * @param delimiter
+	 * @param delimiter delimiter character
 	 */
 	public BaseParser(char delimiter) {
 		this.delimiter = delimiter;

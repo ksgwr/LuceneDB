@@ -106,7 +106,7 @@ public class LuceneKVSIterator<K,V> implements Iterator<Entry<K,V>>{
 
 	/**
 	 * release IndexSearcher
-	 * @throws IOException
+	 * @throws IOException exception
 	 */
 	public void close() throws IOException {
 		if (searcher!=null) {

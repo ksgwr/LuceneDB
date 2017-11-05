@@ -67,7 +67,7 @@ public class AutoDetectDocumentCreator implements CreateDocumentStrategy {
 	}
 
 	/**
-	 * detect Float > Double > Integer > Long > Text
+	 * detect Float, Double, Integer, Long, Text
 	 * @param value field value
 	 * @return detect type
 	 */

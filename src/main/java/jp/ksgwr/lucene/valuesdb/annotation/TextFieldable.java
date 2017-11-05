@@ -13,8 +13,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface TextFieldable {
-	/** if map field and true, key field set TextField */
+	/** @return if map field and true, key field set TextField */
 	boolean key() default true;
-	/** if map field and true, value field set TextField */
+	/** @return if map field and true, value field set TextField */
 	boolean value() default true;
 }

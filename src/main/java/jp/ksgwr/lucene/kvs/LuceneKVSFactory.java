@@ -20,12 +20,12 @@ public class LuceneKVSFactory {
 	/**
 	 * create instance
 	 * @param clazz LuceneKVS class
+	 * @param <T> value type
 	 * @param directory lucene directory(mmap, nios, ram...)
 	 * @param file index file
-	 * @param onMemory if true, use
-	 * @param isVolatile
-	 * @return newInstance
-	 * @throws InvocationTargetException
+	 * @param isVolatile if true, delete file automatically
+	 * @return new instance
+	 * @throws InvocationTargetException exception
 	 */
 	@SuppressWarnings("rawtypes")
 	public static <T extends LuceneKVSBase> T createInstance(Class<T> clazz, Directory directory,
@@ -45,11 +45,11 @@ public class LuceneKVSFactory {
 
 	/**
 	 * create instance
-	 * @param clazz
-	 * @param directory
-	 * @return
-	 * @throws InvocationTargetException
-	 * @throws InstantiationException
+	 * @param clazz LuceneKVS class
+	 * @param <T> value type
+	 * @param directory lucene directory(mmap, nios, ram...)
+	 * @return newInstance new instance
+	 * @throws InvocationTargetException exception
 	 */
 	@SuppressWarnings("rawtypes")
 	public static <T extends LuceneKVSBase> T createInstance(Class<T> clazz, Directory directory) throws InvocationTargetException {

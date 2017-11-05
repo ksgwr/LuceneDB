@@ -19,7 +19,7 @@ public class NgramAnalyzer extends Analyzer {
 
 	/**
 	 * constructor
-	 * @param matchVersion LUCENE VERSION
+	 * @param n ngram
 	 */
 	public NgramAnalyzer(int n) {
 		this.n = n;

@@ -1,44 +1,55 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-	<groupId>jp.ksugawar</groupId>
-	<artifactId>lucene-db</artifactId>
-	<version>0.1.0</version>
-	<packaging>pom</packaging>
-	<name>lucene-db</name>
+  <groupId>jp.ksugawar</groupId>
+  <artifactId>lucene-db</artifactId>
+  <version>0.1.0</version>
+  <packaging>jar</packaging>
+  <name>lucene-db</name>
 
-	<description>various db based lucene</description>
-	<url>https://github.com/ksgwr/LuceneDB</url>
-	<licenses>
-		<license>
-			<name>Apache License 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
-	<scm>
-        <url>https://github.com/ksgwr/LuceneDB</url>
-        <connection>scm:git:git://github.com/ksgwr/LuceneDB.git</connection>
-        <developerConnection>scm:git:git://github.com/ksgwr/LuceneDB.git
+  <properties>
+    <github.repo.directory>/git/mvn-repo</github.repo.directory>
+  </properties>
+  <distributionManagement>
+    <repository>
+      <id>internal.repo</id>
+      <name>Local Github Pages</name>
+      <url>file://${github.repo.directory}</url>
+    </repository>
+  </distributionManagement>
+
+  <description>various db based lucene</description>
+  <url>https://github.com/ksgwr/LuceneDB</url>
+  <licenses>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>https://github.com/ksgwr/LuceneDB</url>
+    <connection>scm:git:git://github.com/ksgwr/LuceneDB.git</connection>
+    <developerConnection>scm:git:git://github.com/ksgwr/LuceneDB.git
         </developerConnection>
-    </scm>
-    <developers>
-    	<developer>
-    		<id>ksgwr</id>
-    		<name>Kohei Sugawara</name>
-    		<email>ksgwarai@gmail.com</email>
-    		<url>https://github.com/ksgwr/</url>
-    		<roles>
-    			<role>lead</role>
-    			<role>architect</role>
-    			<role>developer</role>
-    		</roles>
-    		<timezone>-9</timezone>
-    	</developer>
-    </developers>
+  </scm>
+  <developers>
+    <developer>
+      <id>ksgwr</id>
+      <name>Kohei Sugawara</name>
+      <email>ksgwarai@gmail.com</email>
+      <url>https://github.com/ksgwr/</url>
+      <roles>
+        <role>lead</role>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>-9</timezone>
+    </developer>
+  </developers>
 
-	<build>
+  <build>
     <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
@@ -49,35 +60,71 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>deploy</id>
+            <phase>deploy</phase>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-core</artifactId>
-			<version>5.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-queryparser</artifactId>
-			<version>5.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-analyzers-common</artifactId>
-			<version>5.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.3.1</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-core</artifactId>
+      <version>5.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-queryparser</artifactId>
+      <version>5.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-common</artifactId>
+      <version>5.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.3.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 </project>

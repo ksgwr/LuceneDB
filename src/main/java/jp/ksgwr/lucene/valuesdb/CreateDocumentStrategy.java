@@ -33,7 +33,8 @@ public interface CreateDocumentStrategy {
 
 	/**
 	 * create stores
-	 * @return stores array
+	 * @param fieldsLength array length
+	 * @return stores fields
 	 */
 	public Store[] createStores(int fieldsLength);
 }
