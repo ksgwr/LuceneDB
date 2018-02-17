@@ -20,7 +20,7 @@ public class UserDefineDocumentCreatorTest {
 	@Test
 	public void simpleTest() throws IOException {
 		LuceneValuesDB valuesDB = new LuceneValuesDB();
-		URL testPath = LuceneValuesDB.class.getResource("test.csv");
+		URL testPath = ClassLoader.getSystemResource("jp/ksgwr/lucene/valuesdb/test.csv");
 
 		@SuppressWarnings("unchecked")
 		UserDefineDocumentCreator creator = new UserDefineDocumentCreator(new Class[] {

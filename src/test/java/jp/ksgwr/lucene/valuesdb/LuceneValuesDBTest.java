@@ -27,7 +27,7 @@ public class LuceneValuesDBTest {
 	@Before
 	public void setup() throws IOException {
 		valuesDB = new LuceneValuesDB();
-		URL testPath = LuceneValuesDB.class.getResource("test.csv");
+		URL testPath = ClassLoader.getSystemResource("jp/ksgwr/lucene/valuesdb/test.csv");
 		valuesDB.open(new File(testPath.getFile()), new CSVParser(), new AutoDetectDocumentCreator());
 	}
 
