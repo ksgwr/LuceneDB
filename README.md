@@ -1,4 +1,4 @@
-# KVS Library based Lucene
+# KVS Library based Lucene [![Build Status](https://travis-ci.org/ksgwr/LuceneDB.svg?branch=master)](https://travis-ci.org/ksgwr/LuceneDB)
 ## 特徴
 
 Lucene BaseのMapを提供。
